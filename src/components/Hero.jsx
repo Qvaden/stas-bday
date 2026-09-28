@@ -9,9 +9,16 @@ export default function Hero() {
   const greetingRef = useRef(null);
   const ageRef = useRef(null);
   const subtitleRef = useRef(null);
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    // Сначала ставим всё видимым — fallback
+    gsap.set(
+      [tagRef.current, greetingRef.current, titleRef.current, ageRef.current, subtitleRef.current, scrollRef.current],
+      { opacity: 1 }
+    );
 
     tl.from(tagRef.current, {
       x: -50,
@@ -32,7 +39,6 @@ export default function Hero() {
         {
           scale: 0.5,
           opacity: 0,
-          rotation: -5,
           duration: 1.2,
           ease: 'back.out(1.7)',
         },
@@ -43,9 +49,8 @@ export default function Hero() {
         {
           scale: 0,
           opacity: 0,
-          rotation: 360,
-          duration: 1.5,
-          ease: 'elastic.out(1, 0.5)',
+          duration: 1.2,
+          ease: 'back.out(1.4)',
         },
         '-=0.7'
       )
@@ -57,6 +62,15 @@ export default function Hero() {
           duration: 0.8,
         },
         '-=0.5'
+      )
+      .from(
+        scrollRef.current,
+        {
+          y: 20,
+          opacity: 0,
+          duration: 0.6,
+        },
+        '-=0.3'
       );
 
     // Плавающая анимация для age
@@ -76,6 +90,20 @@ export default function Hero() {
       yoyo: true,
       ease: 'sine.inOut',
     });
+
+    // FALLBACK: если что-то осталось невидимым через 2 секунды — показать
+    const fallback = setTimeout(() => {
+      [tagRef.current, greetingRef.current, titleRef.current, ageRef.current, subtitleRef.current, scrollRef.current].forEach((el) => {
+        if (!el) return;
+        const style = window.getComputedStyle(el);
+        if (parseFloat(style.opacity) < 0.1) {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }
+      });
+    }, 2000);
+
+    return () => clearTimeout(fallback);
   }, []);
 
   // Генерация огней Night City
@@ -128,7 +156,7 @@ export default function Hero() {
         {HERO.subtitle}
       </div>
 
-      <div className="hero-scroll">SCROLL_DOWN</div>
+      <div ref={scrollRef} className="hero-scroll">SCROLL_DOWN</div>
     </section>
   );
 }

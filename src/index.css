@@ -188,7 +188,7 @@ body::after {
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 2rem;
+  padding: 2rem 2rem 8rem 2rem; /* увеличенный нижний padding для scroll-индикатора */
   overflow: hidden;
 }
 
@@ -242,6 +242,7 @@ body::after {
   margin-bottom: 2rem;
   position: relative;
   z-index: 2;
+  display: inline-block;
 }
 
 .hero-tag::before {
@@ -328,9 +329,9 @@ body::after {
 .hero-subtitle {
   margin-top: 2rem;
   font-family: var(--font-mono);
-  font-size: clamp(0.7rem, 1.5vw, 1rem);
+  font-size: clamp(0.65rem, 1.2vw, 0.9rem);
   color: var(--c-text-dim);
-  letter-spacing: 0.4em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   text-align: center;
   max-width: 800px;
@@ -338,15 +339,15 @@ body::after {
   z-index: 2;
   border-top: 1px solid var(--c-cyan);
   border-bottom: 1px solid var(--c-cyan);
-  padding: 12px 24px;
+  padding: 10px 20px;
   background: rgba(0, 240, 255, 0.03);
+  white-space: nowrap; /* не переносить на 2 строки */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hero-scroll {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 3rem;
   color: var(--c-yellow);
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -354,6 +355,7 @@ body::after {
   text-transform: uppercase;
   animation: bounce 2s infinite;
   z-index: 2;
+  text-align: center;
 }
 
 .hero-scroll::after {
@@ -366,8 +368,8 @@ body::after {
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, 12px); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
 }
 
 /* === СЕКЦИИ === */
@@ -471,23 +473,25 @@ section::after {
   font-weight: 600;
   line-height: 1.5;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   transition: all 0.3s ease;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
 }
 
-/* Угол-вырез в правом нижнем углу */
-.reason-card::after {
+/* Декоративный угол-вырез */
+.reason-card::before {
   content: '';
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   background: var(--c-bg);
-  border-top: 1px solid rgba(0, 240, 255, 0.3);
-  border-left: 1px solid rgba(0, 240, 255, 0.3);
+  border-top: 1px solid var(--c-cyan);
+  border-left: 1px solid var(--c-cyan);
+  z-index: 0;
 }
+
+/* Угол-вырез в правом нижнем углу (декоративный) */
 
 .reason-card:hover {
   background: rgba(252, 238, 10, 0.05);
@@ -673,7 +677,6 @@ section::after {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
 }
 
 .wish-card:hover {
