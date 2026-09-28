@@ -851,6 +851,47 @@ section::after {
     line-height: 1.4;
   }
 
+  /* === БЛАГОДАРНОСТЬ === */
+  .thank-you-section {
+    padding: 4rem 1rem;
+  }
+
+  .thank-you-card {
+    padding: 2.5rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .thank-you-card::before,
+  .thank-you-card::after {
+    width: 35px;
+    height: 35px;
+  }
+  .thank-you-card::before {
+    top: -17px;
+    left: -17px;
+  }
+  .thank-you-card::after {
+    bottom: -17px;
+    right: -17px;
+  }
+
+  .thank-you-title {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .thank-you-body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .thank-you-sig {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+
   /* === СЕКРЕТНОЕ ПОСЛАНИЕ === */
   .secret {
     padding: 2.5rem 1.5rem;
@@ -1128,11 +1169,101 @@ section::after {
 .meme-tag[data-tag='ПОД-СИСТЕМА'] { color: #9b59ff; background: rgba(155, 89, 255, 0.12); border-color: #9b59ff; }
 .meme-tag[data-tag='PIXEL HEROES'] { color: #00ff9f; background: rgba(0, 255, 159, 0.12); border-color: #00ff9f; }
 .meme-tag[data-tag='ПК-ГЕЙМИНГ'] { color: #00d4ff; background: rgba(0, 212, 255, 0.12); border-color: #00d4ff; }
+.meme-tag[data-tag='ОТ ДУШИ'] { color: #ff69b4; background: rgba(255, 105, 180, 0.12); border-color: #ff69b4; }
 
 .meme-text {
   font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.5;
+}
+
+/* === БЛАГОДАРНОСТЬ (от сердца) === */
+.thank-you-section {
+  padding: 6rem 2rem;
+}
+
+.thank-you-card {
+  background:
+    radial-gradient(ellipse at top, rgba(255, 200, 100, 0.08), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(255, 100, 150, 0.08), transparent 60%),
+    rgba(10, 0, 20, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(252, 238, 10, 0.4);
+  border-radius: 24px;
+  padding: 4rem 3.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  box-shadow:
+    0 0 60px rgba(252, 238, 10, 0.15),
+    inset 0 0 60px rgba(252, 238, 10, 0.04);
+  overflow: hidden;
+}
+
+/* Декоративные углы — закруглённые, как у открытки */
+.thank-you-card::before,
+.thank-you-card::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--c-yellow);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.thank-you-card::before {
+  top: -25px;
+  left: -25px;
+  background: var(--c-bg);
+}
+.thank-you-card::after {
+  bottom: -25px;
+  right: -25px;
+  background: var(--c-bg);
+}
+
+.thank-you-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #fcee0a 0%, #ff8c00 50%, #ff003c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  filter: drop-shadow(0 0 20px rgba(252, 238, 10, 0.4));
+}
+
+.thank-you-body {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  line-height: 1.8;
+  color: var(--c-text);
+  margin-bottom: 2.5rem;
+}
+
+.thank-you-line {
+  margin: 0.3rem 0;
+  font-weight: 500;
+}
+
+.thank-you-spacer {
+  height: 0.5rem;
+}
+
+.thank-you-sig {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(252, 238, 10, 0.2);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--c-yellow);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-style: italic;
 }
 
 /* === СЕКРЕТНОЕ ПОСЛАНИЕ === */

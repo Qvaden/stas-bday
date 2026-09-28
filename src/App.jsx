@@ -9,6 +9,7 @@ import Timeline from './components/Timeline';
 import Wishes from './components/Wishes';
 import Memes from './components/Memes';
 import SecretLetter from './components/SecretLetter';
+import ThankYou from './components/ThankYou';
 import Finale from './components/Finale';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -30,7 +31,7 @@ export default function App() {
     // === FALLBACK 0: через 1.5 сек показываем ВСЁ что имеет opacity < 1 ===
     const quickFallback = setTimeout(() => {
       const allAnimated = document.querySelectorAll(
-        '.reason-card, .wish-card, .timeline-item, .meme, .section-title, .section-header, .section-num, .section-subtitle, .timeline-text, .timeline-year, .timeline-dot, .secret-title, .secret-text, .final-title, .final-subtitle, .final-emoji, .hero-tag, .hero-greeting, .hero-subtitle, .hero-scroll, .hero-title, .hero-age'
+        '.reason-card, .wish-card, .timeline-item, .meme, .section-title, .section-header, .section-num, .section-subtitle, .timeline-text, .timeline-year, .timeline-dot, .secret-title, .secret-text, .final-title, .final-subtitle, .final-emoji, .hero-tag, .hero-greeting, .hero-subtitle, .hero-scroll, .hero-title, .hero-age, .thank-you-card, .thank-you-title, .thank-you-line, .thank-you-sig'
       );
       allAnimated.forEach((el) => {
         const style = window.getComputedStyle(el);
@@ -97,7 +98,7 @@ export default function App() {
 
     const observeTargets = () => {
       document.querySelectorAll(
-        '.reason-card, .wish-card, .timeline-item, .meme, .section-title, .section-header, .timeline-text, .timeline-year, .timeline-dot, .secret-title, .secret-text, .final-title, .final-subtitle, .final-emoji'
+        '.reason-card, .wish-card, .timeline-item, .meme, .section-title, .section-header, .timeline-text, .timeline-year, .timeline-dot, .secret-title, .secret-text, .final-title, .final-subtitle, .final-emoji, .thank-you-card, .thank-you-title, .thank-you-line, .thank-you-sig'
       ).forEach((el) => observer.observe(el));
     };
 
@@ -125,6 +126,7 @@ export default function App() {
       <Wishes />
       <Memes />
       <SecretLetter />
+      <ThankYou />
       <Finale />
     </div>
   );
