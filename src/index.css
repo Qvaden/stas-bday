@@ -334,16 +334,16 @@ body::after {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   text-align: center;
-  max-width: 800px;
+  max-width: 900px;
   position: relative;
   z-index: 2;
   border-top: 1px solid var(--c-cyan);
   border-bottom: 1px solid var(--c-cyan);
   padding: 10px 20px;
   background: rgba(0, 240, 255, 0.03);
-  white-space: nowrap; /* не переносить на 2 строки */
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.5;
 }
 
 .hero-scroll {
@@ -524,6 +524,8 @@ section::after {
   z-index: 1;
   font-size: 1rem;
   line-height: 1.5;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* === ТАЙМЛАЙН === */
@@ -624,6 +626,8 @@ section::after {
   line-height: 1.5;
   backdrop-filter: blur(10px);
   position: relative;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .timeline-text::before {
@@ -1064,6 +1068,8 @@ section::after {
   line-height: 1.5;
   color: var(--c-text);
   position: relative;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   z-index: 1;
 }
 
@@ -1175,6 +1181,8 @@ section::after {
   font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.5;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* === БЛАГОДАРНОСТЬ (от сердца) === */
@@ -1243,11 +1251,15 @@ section::after {
   line-height: 1.8;
   color: var(--c-text);
   margin-bottom: 2.5rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .thank-you-line {
   margin: 0.3rem 0;
   font-weight: 500;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .thank-you-spacer {
@@ -1330,6 +1342,8 @@ section::after {
   color: var(--c-text);
   white-space: pre-line;
   font-family: var(--font-mono);
+  overflow-wrap: anywhere;
+  word-break: break-word;
   text-align: left;
 }
 
