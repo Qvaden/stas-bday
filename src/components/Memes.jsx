@@ -51,7 +51,7 @@ export default function Memes() {
             ref={(el) => (memesRef.current[i] = el)}
             className="meme"
           >
-            <span className="meme-tag">{meme.tag}</span>
+            <span className="meme-tag" data-tag={meme.tag}>{meme.tag}</span>
             <p className="meme-text">{meme.text}</p>
           </div>
         ))}

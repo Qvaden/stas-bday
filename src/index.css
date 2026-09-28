@@ -497,6 +497,16 @@ section {
   border-radius: 4px;
 }
 
+/* Цветные тэги для разных категорий мемов */
+.meme-tag[data-tag='D&D'] { color: #ff6b00; background: rgba(255, 107, 0, 0.15); }
+.meme-tag[data-tag='CYBERPUNK 2077'] { color: var(--c-neon-cyan); background: rgba(0, 240, 255, 0.15); }
+.meme-tag[data-tag='МАСЯНЯ'] { color: var(--c-neon-yellow); background: rgba(255, 230, 0, 0.15); }
+.meme-tag[data-tag='АНТИПАТИЯ'] { color: var(--c-neon-green); background: rgba(57, 255, 20, 0.15); }
+.meme-tag[data-tag='ПОЛИТЕХ'] { color: var(--c-neon-purple); background: rgba(176, 38, 255, 0.15); }
+.meme-tag[data-tag='GEN-Z'] { color: #ff8fb1; background: rgba(255, 143, 177, 0.15); }
+.meme-tag[data-tag='АБСУРД'] { color: #fff; background: rgba(255, 255, 255, 0.1); }
+.meme-tag[data-tag='ВНУТРЕННЕЕ'] { color: var(--c-neon-pink); background: rgba(255, 43, 214, 0.15); }
+
 .meme-text {
   font-size: 1.15rem;
   font-weight: 600;
