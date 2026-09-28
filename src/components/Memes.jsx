@@ -11,31 +11,37 @@ export default function Memes() {
   const memesRef = useRef([]);
 
   useEffect(() => {
-    gsap.from(titleRef.current, {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 70%',
-      },
-      scale: 0.5,
-      opacity: 0,
-      rotation: -10,
-      duration: 1,
-      ease: 'back.out(1.7)',
-    });
-
-    memesRef.current.forEach((m, i) => {
-      if (!m) return;
-      gsap.from(m, {
+    const ctx = gsap.context(() => {
+      gsap.from(titleRef.current, {
         scrollTrigger: {
-          trigger: m,
-          start: 'top 90%',
+          trigger: sectionRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
         },
-        x: i % 2 === 0 ? -100 : 100,
+        scale: 0.5,
         opacity: 0,
-        duration: 0.7,
-        ease: 'power3.out',
+        rotation: -10,
+        duration: 1,
+        ease: 'back.out(1.7)',
       });
-    });
+
+      memesRef.current.forEach((m, i) => {
+        if (!m) return;
+        gsap.from(m, {
+          scrollTrigger: {
+            trigger: m,
+            start: 'top 95%',
+            toggleActions: 'play none none none',
+          },
+          x: i % 2 === 0 ? -100 : 100,
+          opacity: 0,
+          duration: 0.7,
+          ease: 'power3.out',
+        });
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (

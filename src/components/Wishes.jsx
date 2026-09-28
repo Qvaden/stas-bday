@@ -11,32 +11,46 @@ export default function Wishes() {
   const gridRef = useRef(null);
 
   useEffect(() => {
-    gsap.from(titleRef.current, {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 70%',
-      },
-      y: 100,
-      opacity: 0,
-      duration: 1,
-    });
+    const ctx = gsap.context(() => {
+      // Заголовок — анимация по скроллу
+      gsap.from(titleRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+      });
 
-    const cards = gridRef.current.querySelectorAll('.wish-card');
-    gsap.from(cards, {
-      scrollTrigger: {
-        trigger: gridRef.current,
-        start: 'top 75%',
-      },
-      scale: 0,
-      opacity: 0,
-      rotation: () => gsap.utils.random(-180, 180),
-      duration: 0.8,
-      stagger: {
-        each: 0.1,
-        from: 'random',
-      },
-      ease: 'back.out(1.4)',
-    });
+      // Карточки — каждая со своим триггером через batch,
+      // чтобы анимация ТОЧНО сработала, даже если секция уже видна
+      const cards = gridRef.current.querySelectorAll('.wish-card');
+
+      // Сначала ставим финальное состояние явно, чтобы не было мерцания
+      gsap.set(cards, { opacity: 1, scale: 1, rotation: 0 });
+
+      // Анимируем вход — каждый со своей задержкой
+      cards.forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+          scale: 0,
+          opacity: 0,
+          rotation: gsap.utils.random(-180, 180),
+          duration: 0.8,
+          delay: i * 0.08,
+          ease: 'back.out(1.4)',
+        });
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (

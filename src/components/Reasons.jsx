@@ -11,34 +11,40 @@ export default function Reasons() {
   const gridRef = useRef(null);
 
   useEffect(() => {
-    const cards = gridRef.current.querySelectorAll('.reason-card');
+    const ctx = gsap.context(() => {
+      // Заголовок
+      gsap.from(titleRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+      });
 
-    gsap.from(titleRef.current, {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 70%',
-      },
-      y: 100,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-    });
+      // Каждая карточка — со своим триггером
+      const cards = gridRef.current.querySelectorAll('.reason-card');
+      cards.forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 95%',
+            toggleActions: 'play none none none',
+          },
+          y: 80,
+          opacity: 0,
+          rotation: gsap.utils.random(-12, 12),
+          duration: 0.7,
+          delay: (i % 3) * 0.05,
+          ease: 'back.out(1.5)',
+        });
+      });
+    }, sectionRef);
 
-    gsap.from(cards, {
-      scrollTrigger: {
-        trigger: gridRef.current,
-        start: 'top 80%',
-      },
-      y: 80,
-      opacity: 0,
-      rotation: () => gsap.utils.random(-15, 15),
-      duration: 0.8,
-      stagger: {
-        each: 0.08,
-        from: 'random',
-      },
-      ease: 'back.out(1.5)',
-    });
+    return () => ctx.revert();
   }, []);
 
   return (
