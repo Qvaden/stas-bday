@@ -12,7 +12,6 @@ export default function Wishes() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Заголовок — анимация по скроллу
       gsap.from(titleRef.current, {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -25,14 +24,7 @@ export default function Wishes() {
         ease: 'power3.out',
       });
 
-      // Карточки — каждая со своим триггером через batch,
-      // чтобы анимация ТОЧНО сработала, даже если секция уже видна
       const cards = gridRef.current.querySelectorAll('.wish-card');
-
-      // Сначала ставим финальное состояние явно, чтобы не было мерцания
-      gsap.set(cards, { opacity: 1, scale: 1, rotation: 0 });
-
-      // Анимируем вход — каждый со своей задержкой
       cards.forEach((card, i) => {
         gsap.from(card, {
           scrollTrigger: {
@@ -40,12 +32,11 @@ export default function Wishes() {
             start: 'top 90%',
             toggleActions: 'play none none none',
           },
-          scale: 0,
+          y: 60,
           opacity: 0,
-          rotation: gsap.utils.random(-180, 180),
-          duration: 0.8,
-          delay: i * 0.08,
-          ease: 'back.out(1.4)',
+          duration: 0.7,
+          delay: i * 0.06,
+          ease: 'power3.out',
         });
       });
     }, sectionRef);
@@ -55,10 +46,13 @@ export default function Wishes() {
 
   return (
     <section ref={sectionRef}>
-      <h2 ref={titleRef} className="section-title">
-        ПОЖЕЛАНИЯ<br />ОТ ДУШИ
-      </h2>
-      <p className="section-subtitle">— и немного от живота —</p>
+      <div className="section-header">
+        <span className="section-num">WISHES.EXE // 10 QUESTS</span>
+        <h2 ref={titleRef} className="section-title">
+          ПОЖЕЛАНИЯ<br />ОТ ДУШИ
+        </h2>
+        <p className="section-subtitle">— &gt; INITIALIZING GENUINE WISHES... —</p>
+      </div>
       <div ref={gridRef} className="wishes-grid">
         {WISHES.map((wish, i) => (
           <div key={i} className="wish-card">

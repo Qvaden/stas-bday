@@ -11,39 +11,44 @@ export default function Finale() {
   const subtitleRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 60%',
-      },
-    });
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 60%',
+          toggleActions: 'play none none none',
+        },
+      });
 
-    tl.from(titleRef.current, {
-      scale: 0,
-      rotation: -360,
-      opacity: 0,
-      duration: 1.5,
-      ease: 'back.out(1.4)',
-    })
-      .from(
-        subtitleRef.current,
-        {
-          y: 50,
-          opacity: 0,
-          duration: 0.8,
-        },
-        '-=0.5'
-      )
-      .from(
-        '.final-emoji',
-        {
-          scale: 0,
-          opacity: 0,
-          duration: 0.5,
-          stagger: 0.1,
-        },
-        '-=0.3'
-      );
+      tl.from(titleRef.current, {
+        scale: 0,
+        rotation: -360,
+        opacity: 0,
+        duration: 1.5,
+        ease: 'back.out(1.4)',
+      })
+        .from(
+          subtitleRef.current,
+          {
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+          },
+          '-=0.5'
+        )
+        .from(
+          '.final-emoji',
+          {
+            scale: 0,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1,
+          },
+          '-=0.3'
+        );
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -52,13 +57,13 @@ export default function Finale() {
         С ДР, {HERO.name}!
       </h2>
       <p ref={subtitleRef} className="final-subtitle">
-        ЛУЧШИХ {HERO.age} ЛЕТ В ТВОЕЙ ЖИЗНИ
+        LEVEL {HERO.age} CLEARED // NEW GAME+
       </p>
       <div className="final-emoji">🎂</div>
       <div className="final-emoji">🎉</div>
       <div className="final-emoji">🥳</div>
       <p className="final-signature">
-        сделано с любовью лучшим другом
+        сделaно в Night City • лучшим другом
       </p>
     </section>
   );

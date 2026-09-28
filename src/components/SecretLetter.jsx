@@ -44,7 +44,7 @@ export default function SecretLetter() {
     <section ref={sectionRef}>
       <div className="secret">
         <h2 ref={titleRef} className="secret-title">
-          СЕКРЕТНОЕ ПОСЛАНИЕ
+          ENCRYPTED_MESSAGE.LV27
         </h2>
         <div ref={textRef} className="secret-text">
           {SECRET_LETTER.join('\n')}

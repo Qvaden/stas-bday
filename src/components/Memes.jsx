@@ -20,7 +20,6 @@ export default function Memes() {
         },
         scale: 0.5,
         opacity: 0,
-        rotation: -10,
         duration: 1,
         ease: 'back.out(1.7)',
       });
@@ -35,7 +34,7 @@ export default function Memes() {
           },
           x: i % 2 === 0 ? -100 : 100,
           opacity: 0,
-          duration: 0.7,
+          duration: 0.6,
           ease: 'power3.out',
         });
       });
@@ -46,10 +45,13 @@ export default function Memes() {
 
   return (
     <div ref={sectionRef} className="memes">
-      <h2 ref={titleRef} className="section-title">
-        МЕМЫ ПРО СТАСА
-      </h2>
-      <p className="section-subtitle">— mix: классика, gen-z, абсурд —</p>
+      <div className="section-header">
+        <span className="section-num">MEMES.NET // MIX_PROTOCOL</span>
+        <h2 ref={titleRef} className="section-title">
+          МЕМЫ ПРО СТАСА
+        </h2>
+        <p className="section-subtitle">— &gt; FETCHING DATA FROM NIGHT_CITY —</p>
+      </div>
       <div className="memes-list">
         {MEMES.map((meme, i) => (
           <div

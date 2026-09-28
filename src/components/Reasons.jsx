@@ -12,7 +12,6 @@ export default function Reasons() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Заголовок
       gsap.from(titleRef.current, {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -25,7 +24,6 @@ export default function Reasons() {
         ease: 'power3.out',
       });
 
-      // Каждая карточка — со своим триггером
       const cards = gridRef.current.querySelectorAll('.reason-card');
       cards.forEach((card, i) => {
         gsap.from(card, {
@@ -34,12 +32,11 @@ export default function Reasons() {
             start: 'top 95%',
             toggleActions: 'play none none none',
           },
-          y: 80,
+          x: -50,
           opacity: 0,
-          rotation: gsap.utils.random(-12, 12),
-          duration: 0.7,
-          delay: (i % 3) * 0.05,
-          ease: 'back.out(1.5)',
+          duration: 0.6,
+          delay: (i % 4) * 0.08,
+          ease: 'power3.out',
         });
       });
     }, sectionRef);
@@ -49,14 +46,17 @@ export default function Reasons() {
 
   return (
     <section ref={sectionRef}>
-      <h2 ref={titleRef} className="section-title">
-        27 ПРИЧИН,<br />ПОЧЕМУ СТАС — ЛЕГЕНДА
-      </h2>
-      <p className="section-subtitle">— осторожно, может вызвать зависть —</p>
+      <div className="section-header">
+        <span className="section-num">REASONS.LOG // 27 ENTRIES</span>
+        <h2 ref={titleRef} className="section-title">
+          27 ПРИЧИН,<br />ПОЧЕМУ СТАС — ЛЕГЕНДА
+        </h2>
+        <p className="section-subtitle">— &gt; ACCESS GRANTED :: LEVEL 27 CLEARED —</p>
+      </div>
       <div ref={gridRef} className="reasons-grid">
         {REASONS.map((reason, i) => (
           <div key={i} className="reason-card">
-            <div className="reason-num">#{String(i + 1).padStart(2, '0')}</div>
+            <div className="reason-num">{String(i + 1).padStart(2, '0')} //</div>
             <div className="reason-text">{reason}</div>
           </div>
         ))}

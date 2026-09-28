@@ -45,10 +45,13 @@ export default function Timeline() {
 
   return (
     <section ref={sectionRef}>
-      <h2 ref={titleRef} className="section-title">
-        ТАЙМЛАЙН<br />ЖИЗНИ СТАСА
-      </h2>
-      <p className="section-subtitle">— от 0 до 27, официально и неофициально —</p>
+      <div className="section-header">
+        <span className="section-num">TIMELINE.DB // 0x00 - 0x1B</span>
+        <h2 ref={titleRef} className="section-title">
+          ТАЙМЛАЙН<br />ЖИЗНИ СТАСА
+        </h2>
+        <p className="section-subtitle">— &gt; LOADING LIFE_DATA.STAS... —</p>
+      </div>
       <div className="timeline">
         {TIMELINE.map((item, i) => (
           <div
