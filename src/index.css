@@ -815,6 +815,11 @@ section::after {
 .meme-tag[data-tag='GEN-Z'] { color: var(--c-pink); background: rgba(255, 0, 60, 0.1); border-color: var(--c-pink); }
 .meme-tag[data-tag='АБСУРД'] { color: var(--c-text); background: rgba(255, 255, 255, 0.05); border-color: var(--c-text); }
 .meme-tag[data-tag='ВНУТРЕННЕЕ'] { color: var(--c-red); background: rgba(255, 56, 56, 0.1); border-color: var(--c-red); }
+.meme-tag[data-tag='ПИЦЦА'] { color: #ff8c00; background: rgba(255, 140, 0, 0.12); border-color: #ff8c00; }
+.meme-tag[data-tag='ГОРЯЧАЯ ШТУЧКА'] { color: #ff3838; background: rgba(255, 56, 56, 0.12); border-color: #ff3838; }
+.meme-tag[data-tag='ПОД-СИСТЕМА'] { color: #9b59ff; background: rgba(155, 89, 255, 0.12); border-color: #9b59ff; }
+.meme-tag[data-tag='PIXEL HEROES'] { color: #00ff9f; background: rgba(0, 255, 159, 0.12); border-color: #00ff9f; }
+.meme-tag[data-tag='ПК-ГЕЙМИНГ'] { color: #00d4ff; background: rgba(0, 212, 255, 0.12); border-color: #00d4ff; }
 
 .meme-text {
   font-size: 1.05rem;
