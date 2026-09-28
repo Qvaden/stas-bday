@@ -633,30 +633,338 @@ section::after {
 }
 
 @media (max-width: 768px) {
-  .timeline::before {
-    left: 20px;
+  /* === ГЛОБАЛЬНО === */
+  html { font-size: 14px; }
+  body { cursor: auto; }
+  .cursor, .cursor-dot { display: none; }
+
+  section {
+    padding: 5rem 1.2rem;
   }
+
+  /* HUD-уголки секций — меньше и в углах */
+  section::before,
+  section::after {
+    width: 18px;
+    height: 18px;
+  }
+  section::before {
+    top: 15px;
+    left: 15px;
+  }
+  section::after {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  /* === HERO === */
+  .hero {
+    padding: 2rem 1.2rem 6rem 1.2rem;
+    min-height: 100vh;
+    min-height: 100dvh; /* dynamic viewport для мобилок */
+  }
+
+  .hero::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    padding: 6px 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-greeting {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 0.8rem;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(3.5rem, 22vw, 7rem);
+    line-height: 0.9;
+  }
+
+  .hero-age {
+    font-size: clamp(5rem, 30vw, 8rem);
+    margin-top: -0.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    padding: 8px 12px;
+    margin-top: 1.5rem;
+    white-space: normal; /* разрешить перенос на мобиле */
+    line-height: 1.6;
+    max-width: 95%;
+    text-align: center;
+  }
+
+  .hero-scroll {
+    margin-top: 2rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+  }
+
+  .hero-stars { opacity: 0.6; } /* меньше мерцания для производительности */
+
+  /* === SECTION HEADER === */
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+  .section-num {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .section-title::before {
+    content: '> ';
+  }
+  .section-subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    padding-left: 0.7rem;
+  }
+
+  /* === ПРИЧИНЫ === */
+  .reasons-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .reason-card {
+    padding: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .reason-num {
+    font-size: 0.75rem;
+  }
+
+  /* === ТАЙМЛАЙН === */
+  .timeline {
+    padding: 1.5rem 0;
+  }
+
+  .timeline::before {
+    left: 15px;
+    width: 2px;
+  }
+
   .timeline-item,
   .timeline-item:nth-child(even) {
-    grid-template-columns: 40px 1fr;
-    gap: 1rem;
+    grid-template-columns: 30px 1fr;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
   }
+
   .timeline-dot {
     grid-column: 1;
+    width: 14px;
+    height: 14px;
   }
+  .timeline-dot::before {
+    inset: -5px;
+  }
+
   .timeline-item .timeline-year,
   .timeline-item:nth-child(even) .timeline-year,
   .timeline-item:nth-child(odd) .timeline-year {
     grid-column: 2;
     text-align: left;
+    font-size: clamp(2rem, 8vw, 3rem);
   }
+
   .timeline-item .timeline-content,
   .timeline-item:nth-child(even) .timeline-content,
   .timeline-item:nth-child(odd) .timeline-content {
     grid-column: 2;
     text-align: left;
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
   }
+
+  .timeline-text {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  /* === ПОЖЕЛАНИЯ === */
+  .wishes-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .wish-card {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .wish-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .wish-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  /* === МЕМЫ === */
+  .memes {
+    padding: 3rem 1.2rem;
+    margin: 3rem auto;
+    border-radius: 16px;
+  }
+
+  .memes::before,
+  .memes::after {
+    width: 25px;
+    height: 25px;
+  }
+
+  .memes-list {
+    gap: 1rem;
+  }
+
+  .meme {
+    padding: 1rem 1.2rem;
+  }
+
+  .meme-tag {
+    font-size: 0.6rem;
+    padding: 3px 8px;
+  }
+
+  .meme-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  /* === СЕКРЕТНОЕ ПОСЛАНИЕ === */
+  .secret {
+    padding: 2.5rem 1.5rem;
+    margin: 4rem auto;
+    border-radius: 16px;
+  }
+
+  .secret::before,
+  .secret::after {
+    width: 18px;
+    height: 18px;
+  }
+
+  .secret-title {
+    font-size: clamp(1.1rem, 5vw, 1.6rem);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .secret-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  /* === ФИНАЛ === */
+  .final {
+    padding: 3rem 1.2rem;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .final-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .final-emoji {
+    font-size: 3rem;
+    margin-top: 1.5rem;
+  }
+
+  .final-signature {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    margin-top: 3rem;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  /* === КОНФЕТТИ === */
+  .confetti-canvas {
+    opacity: 0.5; /* меньше нагрузки на GPU */
+  }
+
+  /* === SCANLINES — слабее на мобиле === */
+  body::before {
+    opacity: 0.3;
+  }
+  body::after {
+    opacity: 0.04;
+    animation: none; /* выключаем CRT-мерцание для батареи */
+  }
+}
+
+/* === Совсем маленькие телефоны (≤ 380px) === */
+@media (max-width: 380px) {
+  html { font-size: 13px; }
+
+  section { padding: 4rem 1rem; }
+
+  .hero-title {
+    font-size: clamp(3rem, 20vw, 5rem);
+  }
+
+  .hero-age {
+    font-size: clamp(4.5rem, 28vw, 6rem);
+  }
+
+  .hero-tag {
+    font-size: 0.6rem;
+    padding: 5px 10px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+
+  .secret-title::before { content: ''; }
+  .secret-title::after { content: ''; }
+}
+
+/* === ПЛАНШЕТЫ (769px — 1024px) === */
+@media (min-width: 769px) and (max-width: 1024px) {
+  section {
+    padding: 6rem 2rem;
+  }
+  .reasons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wishes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* === ГОРИЗОНТАЛЬНАЯ МОБИЛКА (альбомная) === */
+@media (max-width: 900px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: 4rem 1.5rem;
+  }
+  .hero-title { font-size: clamp(3rem, 12vw, 6rem); }
+  .hero-age { font-size: clamp(4rem, 18vw, 7rem); }
 }
 
 /* === ПОЖЕЛАНИЯ === */
